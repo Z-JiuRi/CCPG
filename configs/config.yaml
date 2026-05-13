@@ -1,27 +1,27 @@
 data:
-  data_dir: /storage/hujiacong/zxd/datasets/lora/canonicalization/FeedBack/deepmimo/seeds
-  stats_path: /storage/hujiacong/zxd/datasets/lora/canonicalization/FeedBack/deepmimo/stats.pth
+  data_dir: path/to/data_dir
+  stats_path: path/to/stats
   num_workers: 0
   train_ratio: 0.9
-  device: cuda:2
-  token_size: 128
+  device: cuda:0
+  token_size: 1024
   cond_shape:
   - 224
   - 512
   original_shapes:
     a1:
-    - 2
-    - 64
+    - 8
+    - 2688
     b1:
-    - 2048
-    - 2
+    - 10752
+    - 8
     a2:
-    - 2
-    - 2048
+    - 8
+    - 10752
     b2:
-    - 64
-    - 2
-  max_len: 66
+    - 2688
+    - 8
+  max_len: 210
 resampler:
   latent_cond_len: 128
   hidden_dim: 1024
@@ -71,17 +71,17 @@ lr_scheduler:
 inference:
   seed: 3407
   use_ema: true
-  config: exps/eps30/logs/config.yaml
-  checkpoint_path: exps/eps30/ckpts/best.pth
-  cond_path: /home/zxd/zxd/Huawei/datasets/lora/test/conditions
+  config: path/to/config
+  checkpoint_path: path/to/checkpoint
+  cond_path: path/to/conditions
   cfg_scale: 1.0
   use_ddim: true
   ddim_steps: 50
   eta: 1.0
-  output_dir: exps/eps30/inference
+  output_dir: path/to/output_dir
 # ablation:
   # - structure
   # - size_aware
   # - resampler
-exp_dir: exps/FeedBack/deepmimo/eps1
+exp_dir: path/to/exp_dir
 msg: 1

@@ -7,10 +7,9 @@ export CUDA_VISIBLE_DEVICES=0
 
 mkdir -p logs
 log_file=logs/train_$(date +%Y%m%d_%H%M%S).log
-config_path=/home/zxd/zxd/Huawei/ResamplerDit/exps/eps14_3/logs/config.yaml
+config_path=config/config.yaml
 mode=inference
 
-# 基础训练命令
 python main.py \
     --config $config_path \
     --mode $mode
