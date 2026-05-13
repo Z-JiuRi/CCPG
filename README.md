@@ -62,14 +62,24 @@ pip install torch torchvision torchaudio
 
 ### Training Data
 
-#### Datasets
-[WAIR-D](https://www.mobileai-dataset.com/html/default/yingwen/DateSet/1590994253188792322.html?index=1&language=en)
+CCPG does not train directly from the raw wireless-channel datasets. The training samples are LoRA parameters and their corresponding condition features generated from task-specific models.
 
-[DeepMIMO](https://www.deepmimo.net/)
+The data preparation pipeline is:
+
+1. Download the wireless-channel datasets:
+
+- [WAIR-D](https://www.mobileai-dataset.com/html/default/yingwen/DateSet/1590994253188792322.html?index=1&language=en)
+- [DeepMIMO](https://www.deepmimo.net/)
+
+2. For each dataset and scenario, first train/adapt the task model with the corresponding project and export the LoRA parameters:
+
+- [CSI Compression Feedback](https://github.com/Z-JiuRi/TransNet)
+- [Channel Estimation](https://github.com/Z-JiuRi/ChannelEstimation)
+
+3. Use the exported LoRA parameters and condition features as the training data for this repository.
 
 
-
-Set `data.data_dir` in `configs/config.yaml` to the training data root. The expected directory layout is:
+Set `data.data_dir` in `configs/config.yaml` to the root directory of these prepared samples. The expected directory layout is:
 
 ```text
 path/to/data_dir/
@@ -83,7 +93,7 @@ path/to/data_dir/
 
 ### Statistics File
 
-Set `data.stats_path` to a `.pth` file used for inverse normalization during inference.
+Set `data.stats_path` to the statistics file computed from the prepared LoRA parameters. It is used for inverse normalization during inference.
 
 ### Inference Conditions
 
