@@ -1,6 +1,6 @@
 # CCPG
 
-This repository contains the official implementation of **CCPG** for conditional LoRA parameter generation with diffusion transformers.
+This repository contains the official implementation of **CCPG** for paper 《Fast Cross-Scenario Adaptation of CSI Models via Channel Conditional Parameter Generation》.
 
 ## Overview
 
